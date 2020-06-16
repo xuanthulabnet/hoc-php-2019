@@ -1,0 +1,66 @@
+--- 
+layout: default 
+title: Tham chiếu, tham trị 
+permalink: thamchieu-thamtri/ 
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+    <ul class="section-nav">
+        <li>
+            <a href="#toc1">1. Khái niệm tham chiếu, tham trị</a>
+        </li>
+        <li>
+            <a href="#toc2">2. Sử dụng tham chiếu</a>
+
+        </li>
+    </ul>
+</div>
+
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">Tham chiếu, tham trị <small>(7)</small> </h1>
+    <hr>
+
+    <div>
+        <h2 id="toc1" class="text-danger">1. Khái niệm</h2>
+        <p>
+            <strong>Tham trị</strong> là các đối số trong các hàm, khi truyền giá trị bởi các biến thì nó sẽ tạo ra biến cục bộ trong hàm - biến này lưu giá trị được truyền đến, bản thân biến ngoài hàm không bị ảnh hưởng. Cách khai báo tham số hàm đã
+            biết là tham trị.
+            <pre class="prettyprint lang-php">
+$a = 10;
+$b = 20;
+
+function Ham($x, $y) {
+    echo "x = $x, y = $y", PHP_EOL;
+    $x = 1;   // gán một giá trị khác
+    $y = 2;
+};
+Ham($a, $b);
+
+echo "a = $a, b = $b", PHP_EOL;  // a = 10, b = 20
+</pre>
+        </p>
+        <p><strong>Tham chiếu</strong> thì khi truyền tham số - nó không tạo ra biến cụ bộ mà nó tự động trỏ đến địa chỉ biến truyền vào, dẫn đến thay đổi giá trị biến trong hàm thì kéo theo thay đổi toàn cục</p>
+    </div>
+
+    <div>
+        <h2 id="toc2" class="text-danger">2. Sử dụng tham chiếu</h2>
+        <p>Khai báo biến kiểu tham chiếu cho thêm ký hiệu <code>&</code> trước tên biến</p>
+        <pre class="prettyprint lang-php">
+    $a = 10;
+    $b = 20;
+    
+    function Ham(&$x, &$y) {
+        echo "x = $x, y = $y", PHP_EOL;
+        $x = 1;   // gán một giá trị khác
+        $y = 2;
+    };
+    Ham($a, $b);
+    
+    echo "a = $a, b = $b", PHP_EOL;  // a = 1, b = 2
+</pre>
+    </div>
+
+
+
+</main>

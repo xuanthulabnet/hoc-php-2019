@@ -1,0 +1,164 @@
+---
+layout: default
+title: Hàm
+permalink: ham/
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+        <ul class="section-nav">
+            <li>
+               <a href="#ham">1. Khái niệm hàm</a>
+               <ul>
+                  <li><a href="#khainiem">1.1. Khái niệm và phân loại</a></li>
+                  <li><a href="#quytachoatdong">1.2. Quy tắc hoạt động</a></li>
+               </ul>
+            </li>
+            <li>
+                <a href="#xaydungham">2. Xây dựng hàm</a>
+                <ul>
+                   <li><a href="#dinhnghiaham">2.1. Định nghĩa hàm</a></li>
+                   <li><a href="#sudungham">2.2 Sử dụng hàm</a></li>
+                </ul>
+             </li>
+             <li>
+                <a href="#thamsoham">3. Các tham số hàm</a>
+                <ul>
+                   <li><a href="#phanloaithamso">3.1. Phân loại tham số</a></li>
+                   <li><a href="#truyenthamso">3.2 Truyền tham số</a></li>
+                </ul>
+             </li>
+
+             
+        </ul>
+</div>
+     
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">HÀM <small>(8)</small> </h1>
+    <hr>
+    <a href="https://raw.githubusercontent.com/xuanthulabnet/hoc-php-2019/master/docs/chuong-4.pptx">PowerPoint C4</a>
+
+    <div>
+      <h2 id="ham" class="text-danger">1.  Cấu trúc rẽ nhánh</h2>
+      <h3 class="khainiem">1.1. Khái niệm và phân loại</h3>
+      <p>Hàm là một đoạn chương trình bao gồm một hoặc nhiều xử lý nhằm giải quyết một công việc nào 
+          đó và được xây dựng với mục đích <strong>sử dụng lại nhiều lần</strong>.</p> 
+          <p>Như vậy trong một chương trình nếu có những xử lý giống nhau chúng ta nên xây dựng hàm.
+              Hàm có thể được xây dựng bởi lập trình viên hoặc hàm có sẵn trong ngôn ngữ lập trình. 
+              Ví dụ trong lập trình PHP, chúng ta có thể liệt kê các hàm có sẵn như echo(), sin(),
+            date() ... </p>
+      <p><strong>Phân loại hàm</strong></p>
+      <ul>
+          <li>Hàm tự định nghĩa: là những hàm do tự viết trong chương trình để giải quyết một vấn đề cụ thể nào đó</li>
+          <li>Hàm thư viện: là những hàm có sẵn hoặc cung cấp qua thư viện PHP như các hàm toán học,
+              các hàm kết nối MySQL ...
+          </li>  
+      </ul>
+      <h3 class="quytachoatdong">1.2 Quy tắc hoạt động</h3>
+
+      <ul>
+          <li>Khi máy gặp lời gọi hàm ở bất kỳ chỗ nào đó thì hàm bắt đầu được thực hiện, tức sẽ rời chỗ đó để đi đến hàm được gọi</li>
+          <li>Nếu là hàm có tham số thì máy sẽ thực hiện truyền tham số thực cho các tham số hình thức tương ứng trong hàm</li>  
+           <li>Máy bắt đầu thực hiện lần lượt các câu lệnh trong thân hàm đến khi nào lệnh reuturn hoặc dấu } của hàm thì dừng lại thoát khỏi hàm trở về chương trình đã gọi nó và thực hiện tiếp các câu lệnh của chương trình này.</li> 
+          <li>Nếu hàm trả về giá trị thì giá trị của biểu thức return trong hàm sẽ là giá trị của hàm</li>  
+        </ul>       
+    </div>
+    <div>
+            <h2 id="xaydungham" class="text-danger">2. Xây dựng hàm</h2>
+            <h3 class="dinhnghiaham">2.1. Định nghĩa hàm</h3>
+            <p>Cú pháp định nghĩa hàm cơ bản như sau:</p>
+<pre class="prettyprint lang-php">
+function functionName() {
+    //code to be executed
+    }                        
+</pre>
+<p><code>functionName</code> là tên hàm, tên bắt đầu bằng một ký tự hoặc gạch dưới <code>_</code>, nhưng không được
+    bắt đầu bằng số hay ký tự đặc biệt. Tên hàm không phân biệt chữ in hoa - in thường.</p>
+    <p>Ví dụ sau tạo một hàm <code>helloWorld()</code>. Ký hiệu <code>{</code> cho biết nó là điểm bắt đầu của hàm, ngược lại
+        ký hiệu <code>}</code> cho biết điểm kết thúc hàm.</p>
+   
+
+    <pre class="prettyprint lang-php">
+function helloWorld() {
+    echo "Hello World!";
+}</pre>
+    <h3 id="sudungham">2.2 Sử dụng hàm</h3>
+    <p>Khi đã định nghĩa hàm, chỗ nào muốn sử dụng hàm chỉ việc viết lại tên hàm với tham số 
+        phù hợp cho nó - đó là việc gọi hàm.
+    </p>
+    <p>Ví dụ - gọi hàm <code>helloWorld</code> ở trên</p>
+<pre class="prettyprint lang-php">helloWorld();</pre>
+<p>Nếu hàm có trả về giá trị, có thể lưu lại giá trị do hàm trả về bằng phép gán tên biến cho hàm.
+    Ví dụ tính sin của góc PI/2;
+</p>
+<pre class="prettyprint lang-php">$bien = sin(M_PI/2);</pre>
+<p>Nó gọi hàm sin, và giá trị trả về lưu vào <code>$bien</code></p>
+
+
+</div>
+
+
+<div>
+        <h2 id="thamsoham" class="text-danger">3. Các tham số hàm</h2>
+        <p>Các thông tin chuyển tới cho hàm thông qua <code>đối số của hàm</code>, chúng có vai trò như là <code>biến</code>.
+            Các đối số được chỉ ra sau tên hàm và nằm trong <code>()</code>, ví dụ hàm sau tính phép nhân của hai số truyền vào hàm.
+            </p>
+        <pre class="prettyprint lang-php">
+function tichHaiso($number1, $number2) {
+    $answer = $number1 * $number2;
+    echo $answer;
+}
+
+tichHaiso(2,5);
+//kết quả 10 </pre>   
+<h3>Giá trị trả về của hàm</h3>
+<p>Một hàm có thể trả về một giá trị bằng câu lệnh <code>return $value;</code> với <code>$value</code> là giá trị trả về.
+    Trong hàm nếu gặp <code>return</code> hàm sẽ dừng thi hành và gửi giá trị trả về cho nơi gọi hàm.
+    </p>
+    <pre class="prettyprint lang-cs">function phepnhan($num1, $num2) {
+    $r = $num1 * $num2;
+    return $r;
+}
+
+echo phepnhan(3,4);
+//Kết quả in ra: 12</pre>
+    
+        <h3 class="phanloaithamso">3.1. Phân loại tham số</h3>
+        <p>Tham số hàm có loại tham số tham trị và tham số tham chiếu</p>
+        <ul>
+            <li>Tham số tham trị: là các đối số được sao chép giá trị truyền vào như biến cục bộ</li>
+            <li>Tham số tham chiếu: thì sử dụng tên biến truyền vào làm tham số - và tham chiếu đến
+                vùng nhớ của biến đó, do vậy khi thay đổi giá trị biến ảnh hưởng tới biến nơi gọi hàm.
+                Khi hai báo hàm muốn thám số có kiểu tham chiếu thì thêm ký hiệu <code>&</code> vào trước tên biến
+            </li>
+        </ul>
+        
+
+
+        <h3 class="truyenthamso">3.2 Truyền tham số</h3>
+        <p>Truyền tham số cho hàm đối với kiểu tham trị ta sử dụng giá trị ở đối số, hoạc biến chứa giá trị</p>
+        <p>Đối với kiểu tham chiếu thì bắt buộc phải dùng biến làm tham số</p>
+        <pre class="prettyprint lang-cs">
+function addFive(&$number) { //Tham chiếu
+    $number += 5;
+    return $number;
+}
+
+$a = 10;
+echo addFive($a);
+echo $a;
+                
+        </pre>
+       
+</div>
+
+<pre class="prettyprint lang-php">
+function tenHam($thamso1, $thamso2)
+{
+    // các code xử lý trong hàm
+    return biểu_thức;
+}
+</pre>
+
+</main>
+

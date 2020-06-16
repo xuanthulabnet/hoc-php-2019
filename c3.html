@@ -1,0 +1,253 @@
+---
+layout: default
+title: Các lệnh có cấu trúc
+permalink: lenh-cau-truc/
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+        <ul class="section-nav">
+            <li>
+               <a href="#ifstruct">1. Cấu trúc rẽ nhánh</a>
+               <ul>
+                  <li><a href="#if">1.1. Dạng không đầy đủ</a></li>
+                  <li><a href="#ifelse">1.2. Dạng đầy đủ</a></li>
+               </ul>
+            </li>
+            <li>
+                <a href="#switch">2. Cấu trúc lựa chọn</a> 
+             </li>
+
+             <li>
+                <a href="#forwhiledo">3. Cấu trúc lặp</a>
+                <ul>
+                   <li><a href="#for">3.1. Cấu trúc lặp for</a></li>
+                   <li><a href="#whiledo">3.2. Cấu trúc lặp while, do while</a></li>
+                </ul>
+             </li>
+             <li>
+                <a href="#special">4. Các lệnh đặc biệt</a>
+                <ul>
+                   <li><a href="#break">4.1. Lệnh Break</a></li>
+                   <li><a href="#continue">4.2. Lệnh Continue</a></li>
+                </ul>
+             </li>
+        </ul>
+</div>
+     
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">CÁC LỆNH CÓ CẤU TRÚC <small>(17)</small> </h1>
+    <hr>
+    <a href="https://raw.githubusercontent.com/xuanthulabnet/hoc-php-2019/master/docs/chuong-3.pptx">PowerPoint C3</a>
+
+    <div>
+      <h2 id="ifstruct" class="text-danger">1.  Cấu trúc rẽ nhánh</h2>
+      <p>Cấu trúc rẽ nhánh được thực hiện thông qua lệnh <code>if</code> - lệnh này kiểm tra điều kiện logic nếu đúng thì thì hiện một khối lệnh này,
+    nếu sai thì thực hiện khối lệnh khác</p>
+      <h3 id="if">1.1 Rẽ nhánh không đầy đủ</h3>
+      <p>Đây là cấu trúc dạng đơn giản, cú pháp như sau</p>
+<pre class="prettyprint lang-php p-2">
+if ($điều_kiện) {
+    // Các lệnh khi điều kiện là đúng
+}
+</pre>
+<p><code>$điều_kiện</code> là gí trị <code>true</code> hoặc <code>false</code>, nó thường là kết quả của phép toán logic (>, >=, == , &lt;, &lt;=, &&, ||, !)</p>
+<pre class="prettyprint lang-php p-2">
+//nhập vào $a, $b    
+if ($a > $b)
+    echo "a lớn hơn b";              
+</pre>
+<p>Ví dụ, lấy ngày tuần (thứ hiện tại), nếu là thứ 6 in ra câu - chúc cuối tuần vui vẻ</p>
+<pre class="prettyprint lang-php p-2">
+$ngaytuan = date('w');
+if ($ngaytuan == 5)
+{
+    echo "Hôm nay là thứ 6 - chúc cuối tuần vui vẻ";
+}          
+</pre>
+<h3 id="ifelse">1.2 Rẽ nhánh đầy đủ</h3>
+<p>Cú pháp</p>
+<pre class="prettyprint lang-php p-2">
+if ($điều_kiện) {
+    // Các lệnh khi điều kiện là đúng
+} 
+else
+{
+    // Các lệnh  thực hiện  khi điều  kiện sai
+}  
+</pre>
+<p>Ví dụ:</p>
+<pre class="prettyprint lang-php p-2">
+// nhập  biến $a    
+if ($a > 0) {
+    echo  "$a là số dương";
+} 
+else
+{
+    echo  "$a là số âm";
+}  
+</pre>
+<p>Làm ví dụ tổng hợp giải phương trình bậc 2 (nhập tham số a, b, c): <strong>a x<sup>2</sup> + b x + c = 0</strong></p>
+
+    </div> 
+ 
+    <div>
+        <h2 id="switch" class="text-danger">2. Cấu trúc lựa chọn</h2>
+        <p>Đây là cấu trúc rẽ nhiều nhánh thực hiện với lệnh <code>switch</code>, cú pháp như sau:</p>
+        <pre class="prettyprint lang-php p-2">
+switch (biểu_thức){
+    case giá_trị_1:
+        Code thực hiện nếu biểu_thức = giá_trị_1;
+    break;
+
+    case giá_trị_n:
+        Code thực hiện nếu biểu_thức = giá_trị_n;
+    break;
+
+    default:
+        Code thực hiện nếu tất cả các trường hợp phía trên không xảy ra.
+} </pre>
+<p>Ví dụ:</p>
+<pre class="prettyprint lang-php p-2">
+// nhập biến $tuoi
+echo "Chọn 1 - để tính sin", PHP_EOL;
+echo "Chọn 2 - để tính cos", PHP_EOL;
+echo "Chọn 3 - tính căn bậc 2", PHP_EOL;
+
+$luachon = readline("Chọn: ");
+
+switch($luachon) 
+{
+    case '1':
+        $so = readline('Góc (rad) cần tính sin:');
+        $sin = sin($so);
+        echo "Sin của góc $so là $sin", PHP_EOL;
+        break;
+
+    case '2':
+        $so = readline('Góc (rad) cần tính cos:');
+        $cos = cos($so);
+        echo "Cos của góc $so là $cos", PHP_EOL;
+        break;
+        
+    case '3':
+        $so = readline('Số cần tính căn bậc 2:');
+        $can = sqrt($so);
+        echo "Căn bậc 2 của $so là $can", PHP_EOL;
+        break;
+    default:
+        echo "Không chọn đúng";
+    break;    
+}    
+</pre>
+
+
+      </div> 
+   
+
+      <div>
+        <h2 id="forwhiledo" class="text-danger">3. Cấu trúc lặp</h2>
+        <p>Các vòng lặp được sử dụng nhằm mục đích thi khối lệnh nào đó nhiều lần. Trong Php cung cấp một số loại vòng lặp: </p>  
+        <ul>
+            <li><code>Vòng lặp for</code> lặp lại một khối lệnh một số lần.</li>
+            <li><code>Vòng lặp while</code> lặp lại khối lệnh nếu điều kiện kiểm tra là đúng.</li>
+            <li><code>Vòng lặp do ... while</code> đầu tiên thi hành khối lệnh, đến cuối khối lệnh kiểm tra điều kiện lặp lại khối lệnh.</li>
+        </ul>   
+        <h3 id="for">3.1 Vòng lặp for</h3>
+        <p>Thường bạn sử dụng vòng lặp này khi đã biết rõ số lần cần lặp lại:</p>
+        <pre class="prettyprint lang-php p-2">for (khởi_tạo; điều_kiện; tăng_giảm)
+{
+    // Code thi hành;
+} </pre>
+<p>Như vậy vòng lặp for có ba tham số điều khiển lặp cách nhau bởi dấu <code>;</code> là <code>khởi tạo</code>, <code>điều_kiện</code>, <code>tăng_giảm</code>.
+    Sự làm việc như sau:
+    </p>
+    <ol>
+        <li>Khởi đầu thi hành lệnh tại <code>khởi tạo</code></li>
+        <li>Kiểm tra biểu thức <code>điều_kiện</code>, nếu là <code>true</code> thi hành khối lệnh rồi sang bước 3, nếu <code>false</code> kết thúc lặp.</li>
+        <li>Kết thúc khối lệnh, thi hành biểu thức <code>tăng_giảm</code>, lặp lại bước 2</li>
+    </ol>
+     <p>Lưu ý việc viết ba tham số của for, không cận thận có thể dẫn đền vòng lặp vô tận. </p>   
+    <p>Ví dụ lặp lại khối lệnh 10 lần:</p>
+    <pre class="prettyprint lang-php p-2">for ($i = 1; $i&lt;=10; $i++) 
+{
+    echo "Vòng lặp thứ $i";
+}
+    </pre> 
+        <p><strong>Bài tập:</strong> Tính tổng các số nguyên dương chẵn nhỏ hơn 20 </p>
+        <h3 id="for">3.2 Vòng lặp while, do .. while</h3>
+        <h4>3.2.1 Vòng lặp while</h4>
+        <p>Với vòng lặp while thì bạn không cần biết số lần khối lệnh thi hành, mà khối lệnh sẽ thi hành khi mà điều_kiện còn là <code>true</code>
+            , cú pháp lệnh for như sau:</p>
+
+       <pre class="prettyprint lang-php p-2">while (điều_kiện là true) {
+    khối lệnh thi hành;
+}</pre>     
+    <p>Ví dụ dưới đây, đầu tiên gán $i là 1 ($i = 1). Sau đó lặp lại khối lệnh khi mà $i còn nhỏ hơn 5 ($i<5). $i được tăng thêm một ($i++) mỗi lần khối lệnh thi hành:
+
+    </p>
+    <pre class="prettyprint lang-php p-2">
+$i = 1;
+while ($i &lt; 5) {
+    echo "Giá trị là $i", PHP_EOL;
+    $i++;
+}</pre>
+     <p><strong>Bài tập:</strong> dòng vòng lặp while tính tổng các số nguyên dương lẻ nhỏ hơn 10</p>
+     <h4>3.2.2 Vòng lặp do .. while</h4>
+     <p>Với vòng lặp <code>do ... while</code>, khối lệnh sẽ thi hành ngày, sau đó kiểm tra điều kiện, nếu điều kiện đúng thì lại lặp lại khối lệnh.
+        Cú pháp <code>do ... while</code> như sau:
+        </p>
+     <pre class="prettyprint lang-php p-2">
+do 
+{
+    khối lệnh thi hành;
+} 
+while (điều_kiện);</pre>   
+<p>Ví dụ: In ra màn hình giá trị của $i, sau đó tăng $i thêm một. Tiếp theo kiểm tra điều kiện, nếu điều kiện đúng (
+        $i nhỏ hơn hoặc bằng 5) thì lặp lại khối lệnh.</p>
+        <pre class="prettyprint lang-php p-2">$i = 2;
+do 
+{
+    echo "Số là " . $i, PHP_EOL;
+    $i++;
+} while($i &lt;= 5);</pre>
+
+     </div> 
+
+     <div>
+            <h2 id="special" class="text-danger">4. Các lệnh đặc biệt</h2>
+            <p>Câu lệnh <code>continue;</code> và <code>break;</code> dùng để điều hướng vòng lặp.</p>
+            <h3 id="break">4.1. Lệnh break</h3>
+            <p><code>break;</code> được sử dụng trong các vòng lặp <code>for</code>, <code>while</code>, <code>do while</code>, <code>foreach</code>
+                để ngắt ngay lập tức hoàn toàn vòng lặp (thoát ra khỏi vòng lặp). Nếu sử dụng <code>break</code> ngoài vòng lặp có thể
+                    dẫn đến kết thúc chương trình.
+                </p>
+             <p>Ví dụ: Vị dụ vòng lặp sau kết thúc sau khi số 5 được in ra.</p>   
+<pre class="prettyprint lang-php p-2">
+for ($i=0;$i&lt;=50;$i++)  
+{
+    echo $i;
+    if ($i== 5) {
+        break;
+    }
+}</pre>
+<h3 id="break">4.2. Lệnh continue</h3>
+<p>Sử dụng từ khóa <code>continue</code> trong vòng lặp để bỏ qua vòng hiện tài và bắt đầu một vòng mới.</p>
+<p>Ví dụ sau chỉ in ra các số lẻ (vòng lặp gặp số chẵn sẽ bỏ qua).</p>
+<pre class="prettyprint lang-php p-2">
+for ($i=0; $i<10; $i++) {
+    if ($i%2 == 0) {
+        continue;
+    }
+    echo $i . ' '; 
+}    
+</pre>
+
+
+    </div>
+
+
+    
+
+</main>
+

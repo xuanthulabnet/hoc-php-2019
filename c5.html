@@ -1,0 +1,209 @@
+---
+layout: default
+title: Mảng trong PHP
+permalink: mang/
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+        <ul class="section-nav">
+            <li>
+               <a href="#mang">1. Khái niệm mảng</a>
+            </li>
+            <li>
+                <a href="#khaibao">2. Khai báo mảng</a>
+                
+             </li>
+             <li>
+                <a href="#truyxuat">3. Truy xuất mảng</a>
+                <ul>
+                   <li><a href="#motchieu">3.1. Truy xuất mảng 1 chiều</a></li>
+                   <li><a href="#haichieu">3.2. Truy xuất mảng 2 chiều</a></li>
+                </ul>
+             </li>
+
+             
+        </ul>
+</div>
+     
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">MẢNG <small>(8)</small> </h1>
+    <hr>
+    <a href="https://raw.githubusercontent.com/xuanthulabnet/hoc-php-2019/master/docs/chuong-5.pptx">PowerPoint C5</a>
+
+    <div>
+      <h2 id="mang" class="text-danger">1. Khái niệm mảng</h2>
+      <p>Mảng <code>Array</code> là một loại biến đặc biệt, trong nó giữ nhiều giá trị.
+        Mỗi giá trị trong mảng được gọi là <code>phần tử</code> của mảng, các phần tử trong mảng được truy xuất
+        thông qua tên biến và ký hiệu <code>[index]</code>, trong đó <code>index</code> được gọi là chỉ số của phần
+        tử, chỉ số này có thể là một số nguyên hay là một chuỗi ...  tùy thuộc vào loại mảng mà bạn khởi tạo ở phần sau.
+    </p>
+    </div>
+    <div>
+        
+        <h2 id="khaibao" class="text-danger">2. Khai báo mảng</h2>
+<pre class="prettyprint lang-php">
+$mang1 = array();   // tạo một mảng rỗng
+$mang2 = [];        // tạo một mảng rỗng - cú pháp này dễ đọc hơn.
+</pre>
+<p><strong>Mảng dạng số</strong> là mảng mà mỗi phần tử của nó có một chỉ số là số nguyên.
+    Một biến mảng dạng này chỉ số sẽ gán một cách tự động và bắt đầu từ chỉ số là số <code>0</code> khi phần tử đầu tiên được thêm vào,
+    cứ thế phần tử thứ 2 thêm vào mảng sẽ có chỉ số là <code>1</code>:
+</p>
+<p class="alert alert-warning">Nhớ là chỉ số của mảng bao giờ cũng bắt đầu từ <code>0</code> chứ không phải <code>1</code></p>
+
+
+<p><strong>Khởi tạo mảng và đưa phần tử vào mảng</strong>: giá sử khởi tạo mảng lưu danh sách tên khách hàng</p>
+<pre class="prettyprint lang-php">&lt;?php
+$names = ["An", "Minh", "Long"];    // khởi tạo mảng $name, đưa vào nó 3 phần tử
+var_export($names);                 // export biến mảng
+</pre>
+<p>Chạy thử, kết quả export của biến $names</p>
+<pre class="prettyprint"><small>array (
+0 => 'An',
+1 => 'Minh',
+2 => 'Long',
+)
+</small></pre>
+<p>Như vậy phần tử có chỉ số <code>0</code> thì giá trị là <code>'An'</code>, chỉ số <code>1</code> giá trị là <code>'Minh'</code> ...
+chỉ số này dùng với ký hiệu <code>$tên-biến[chỉ-số]</code> để <strong>truy xuất</strong> <small>(đọc hoặc gán)</small> phần tử mảng:</p>
+<pre class="prettyprint lang-cs">
+$ten      =  $names[2];             // Long
+$names[1] = 'Nguyên';               // phần  tử chỉ số 1 gán giá trị  mới
+</pre>
+<p><strong>Thêm phần tử vào mảng</strong> bạn có thể đưa các phần tử vào mảng bằng cách viết</p>
+<pre class="prettyprint lang-php">
+$bienmang[index] = $giatri;          // thêm vào phần tử với chỉ số index, phần tử nếu là mới
+                                 // thêm sẽ nằm cuối, dù giá trị index bao nhiêu
+
+$bienmang[] = $giatri;               // thêm vào cuối phần tử mới, chỉ số phần tử này bằng chỉ số lớn nhất cộng 1
+                                 // nếu đây là phần tử đầu tiên của mảng thì chỉ số sẽ là 0
+</pre>
+<p>Nhớ là các chỉ số phải là số nguyên, mỗi biến mảng sẽ lưu một giá trị để đánh chỉ số, giá trị này luôn bằng chỉ số
+lớn nhất của index số nguyên thêm vào, nếu thêm phần tử bằng <code>[]=</code> thì giá trị này sẽ tăng thêm 1, nếu thêm bằng <code>[index]=</code>
+giá trị này sẽ bằng <code>index</code> nếu index là lớn nhất so với các index có sẵn trong mảng. Hãy xem ví dụ sau, tạo
+biến mảng chỉ thêm các phần tử:</p>
+<pre class="prettyprint lang-cs">&lt;?php
+unset($names);       // hủy biến nếu biến đang có để khởi tạo từ đầu
+
+$names[20] = "A";
+$names[2]  = "B";
+$names[1]  = "C";
+
+var_export($names); <small>
+/*
+    array (
+        20 => 'A',
+        1 => 'B',
+        2 => 'C',
+    )
+*/</small>
+$names[] = "D";     //thêm vào cuối
+var_export($names); <small>
+/*
+array (
+    20 => 'A',
+    2 => 'B',
+    1 => 'C',
+    21 => 'D',
+)*/</small></pre>
+<p>Từ ví dụ trên bạn thấy, chỉ số <code>index</code> không phải là thứ tự sắp xếp các phần tử trong mảng. Chỉ số
+không liên quan đến số lượng phần tử trong mảng (nhiều người nhầm lẫn). Ví  dụ mảng trên, có phần 4 phần tử, nhưng
+chỉ số đã nhảy đến 21. Tuy nhiên nếu mảng chỉ thêm vào bằng cách <code>[]</code> và các phần tử không bị xóa (unset),
+thì có sự liên quan.</p>
+
+
+
+<p>Các phần tử của mảng này (giá trị) có thể lưu trữ bất kỳ loại biến nào, có thể là <code>chuỗi</code>, <code>số nguyên</code>,
+    <code>một mảng khác</code>, <code>boolean</code> ... Ví dụ:
+</p>
+<pre class="prettyprint">
+$arrayData[0] = '<strong>Mèo</strong>';
+$arrayData[1] = '4';
+$arrayData[2] = 'chân';
+echo "$arrayData[0] có $arrayData[1] $arrayData[2]";
+// In ra:
+// Mèo có 4 chân
+        
+// In ra:
+// Mèo có 4 chân
+HTML
+)?>
+</pre>
+
+      </div>
+      
+      <div>
+            <h2 id="truyxuat" class="text-danger">3. Truy xuất mảng</h2>
+            <h3 id="motchieu">3.1. Truy xuất mảng 1 chiều</h3>
+<pre class="prettyprint lang-php">
+$phantu = $bienmang[chiso];
+</pre>
+            <h3 id="haichieu">3.2. Truy xuất mảng 2 chiều</h3>
+<pre class="prettyprint lang-php">
+$phantu = $bienmang[chisohang][chisocot];
+</pre>
+
+<h3 class="text-primary">Vòng lặp duyệt qua các phần tử mảng</h3>
+<p>Cách phổ biến nhất là dùng lệnh <code>foreach</code>, có hai trường hợp mỗi lần lặp trích xuất ra giá trị phần tử
+và trích xuất cả giá trị và chỉ số index</p>
+<pre class="prettyprint lang-php">
+// vòng lặp, lấy giá trị từng phần tử
+foreach ($bienmang as $value) {
+    var_dump($value);
+}
+
+// vòng lặp, lấy  giá trị  và chỉ số từng phần tử
+foreach ($bienmang as $key => $value) {
+    var_dump($key, $value);
+}</pre>
+<p>Ví dụ:</p>
+<pre class="prettyprint lang-php">&lt;?php
+    $names = ["An", "Minh", "Nguyên"];
+    foreach ($names as $k => $name)
+    {
+        echo "chỉ số $k; giá trị $name", PHP_EOL;
+    }
+    /*
+        chỉ số 0; giá trị An
+        chỉ số 1; giá trị Minh
+        chỉ số 2; giá trị Nguyên
+    */
+    foreach ($names as $name)
+    {
+        echo "$name ";
+    }
+//An Minh Nguyên </pre>
+
+<h3 class="text-primary">Số phần tử (kích thước) trong mảng, kiểm tra là biến mảng</h3>
+<p>Hàm <code>is_array($bien)</code> kiểm tra xem <code>$bien</code> có  phải là mảng.
+    <code>count($bienmang)</code> trả vế số lượng phần tử trong mảng. Nếu mảng số - khởi tạo bằng cách liệt kê các giá trị
+    - thì chỉ số và số phần tử có sự liên hệ,
+nên trường hợp này duyệt được bằng vòng lặp <code>for</code></p>
+<pre class="prettyprint lang-php">
+$names = ["An", "Minh", "Nguyên"];  // mảng số theo thứ tự
+
+$leng = count($names);
+echo "Số phần tử là: " . $leng, PHP_EOL;
+
+// Lặp từ phần tử cuối lên đầu
+for ($i = $leng -1; $i >= 0; $i--)
+{
+    echo $names[$i], ' ';
+}
+/*
+    Số phần tử là: 3
+    Nguyên Minh An
+*/
+</pre>
+
+
+
+
+
+    </div>
+
+        
+
+</main>
+

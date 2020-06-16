@@ -1,0 +1,5 @@
+{
+    "php.suggest.basic": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.saveAllFilesBeforeRun": true
+}

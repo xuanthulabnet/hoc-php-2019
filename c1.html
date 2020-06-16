@@ -1,0 +1,350 @@
+---
+layout: default
+title: Tổng quan về PHP
+permalink: tong-quan/
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+        <ul class="section-nav">
+          <li class="toc-entry toc-h2">
+            <a href="#gioi-thieu-php">1.	 Giới thiệu ngôn ngữ PHP</a>
+            <ul>
+              <li class="toc-entry toc-h3"><a href="#lich-su">1.1. Lịch sử phát triển</a></li>
+              <li class="toc-entry toc-h3"><a href="#su-can-thiet">1.2. Vai trò</a></li>
+            </ul>
+          </li>
+          <li class="toc-entry toc-h2">
+              <a href="#setup">2. Cài đặt môi trường phát triển ứng dụng PHP</a>
+              <ul>
+                <li class="toc-entry toc-h3"><a href="#WampServer">2.1. Cài đặt PHP, APACHE, MYSQL với WampServer</a></li>
+                <li class="toc-entry toc-h3"><a href="#vsc">2.2. Cài đặt Visual Studio Code</a></li>
+                <li class="toc-entry toc-h3"><a href="#newproject">2.3. Tạo mới, ghi một chương trình PHP</a>
+                  <ul>
+                    <li><a href="#run1">Chạy từ Terminal</a></li>
+                    <li><a href="#run2">Chạy từ VSC</a></li>
+                    <li><a href="#run3">Chạy Website</a></li>
+                    <li><a href="#tagphp">Thẻ php</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="toc-entry toc-h2">
+                <a href="#help">3.	 Sử dụng trợ giúp</a>
+                
+              </li>
+
+        </ul>
+</div>
+     
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">Tổng quan về ngôn ngữ lập trình PHP <small>(03)</small> </h1>
+    <hr>
+    <a href="https://raw.githubusercontent.com/xuanthulabnet/hoc-php-2019/master/docs/chuong-1.pptx">PowerPoint C1</a>
+    <div>
+    <h2 id="gioi-thieu-php" class="text-danger">1. Giới thiệu PHP</h2>
+    <p><strong>PHP</strong> (Hypertext Preprocessor) là ngôn ngữ lập trình được dùng cho mục đích tổng quát, ban đầu nó được thiết kể tập trung cho các ứng dụng web. Được giới thiệu từ năm 1994 bởi Rasmus Lerdorf.</p>
+    <p>PHP có tốc độ nhanh, nhỏ gọn, <code>cú pháp giống C và Java</code>, dễ học và thời gian xây dựng sản phẩm tương đối ngắn hơn so với các ngôn ngữ khác nên PHP đã nhanh chóng trở thành một ngôn ngữ lập trình web phổ biến nhất thế giới.</p>
+
+    <h3 id="lich-su">1.1. Lịch sử phát triển</h3>
+    <p>Phiên bản PHP hiện tại là <code>PHP 7.x</code>, phiên bản PHP mới này có ứng dụng rất nhiều kỹ thuật lập trình hiện đại như lớp ẩn danh, chỉ rõ kiểu trả về cho hàm ... Các cập nhật mới về PHP tại <a target="_blank" href="https://www.php.net/">https://www.php.net/</a></p>
+
+    <h4>PHP/FI (1994)</h4>
+    <p>PHP được phát triển từ một sản phẩm có tên là PHP/FI. PHP/FI do Rasmus Lerdorf tạo ra năm 1994, ban đầu được xem như là một tập con đơn giản của các mã kịch bản Perl để theo dõi tình hình truy cập đến bản sơ yếu lý lịch của ông trên mạng. Ông đã đặt tên cho bộ mã kịch bản này là 'Personal Home Page Tools'. Khi cần đến các chức năng rộng hơn, Rasmus đã viết ra một bộ thực thi bằng C lớn hơn để có thể truy vấn tới các cơ sở dữ liệu và giúp cho người sử dụng phát triển các ứng dụng web đơn giản. Rasmus đã quyết định công bố mã nguồn của PHP/FI cho mọi người xem, sử dụng cũng như sửa các lỗi có trong nó đồng thời cải tiến mã nguồn.</p>
+
+    <p>Vào năm 1997, PHP/FI 2.0, lần viết lại thứ hai của phiên bản C, đã thu hút được hàng ngàn người sử dụng trên toàn thế giới với xấp xỉ 50.000 tên miền đã được ghi nhận là có cài đặt nó, chiếm khoảng 1% số tên miền có trên mạng Internet. Tuy đã có tới hàng nghìn người tham gia đóng góp vào việc tu chỉnh mã nguồn của dự án này thì vào thời đó nó vẫn chủ yếu chỉ là dự án của một người.
+    </p>
+    <h4>PHP 3 (1998)</h4>
+    <p>PHP 3.0 là phiên bản đầu tiên cho chúng ta thấy một hình ảnh gần gũi với các phiên bản PHP mà chúng ta được biết ngày nay. Nó đã được Andi Gutmans và Zeev Suraski tạo ra năm 1997 sau khi viết lại hoàn toàn bộ mã nguồn trước đó. Lý do chính mà họ đã tạo ra phiên bản này là do họ nhận thấy PHP/FI 2.0 hết sức yếu kém trong việc phát triển các ứng dụng thương mại điện tử mà họ đang xúc tiến trong một dự án của trường đại học. Trong một nỗ lực hợp tác và bắt đầu xây dựng dựa trên cơ sở người dùng đã có của PHP/FI, Andi, Rasmus và Zeev đã quyết định hợp tác và công bố PHP 3.0 như là phiên bản thế hệ kế tiếp của PHP/FI 2.0, và chấm dứt phát triển PHP/FI 2.0.
+    </p>
+    <p>Một trong những sức mạnh lớn nhất của PHP 3.0 là các tính năng mở rộng mạnh mẽ của nó. Ngoài khả năng cung cấp cho người dùng cuối một cơ sở hạ tầng chặt chẽ dùng cho nhiều cơ sở dữ liệu, giao thức và API khác nhau, các tính năng mở rộng của PHP 3.0 đã thu hút rất nhiều nhà phát triển tham gia và đề xuất các mô đun mở rộng mới. Hoàn toàn có thể kết luận được rằng đây chính là điểm mấu chốt dẫn đến thành công vang dội của PHP 3.0. Các tính năng khác được giới thiệu trong PHP 3.0 gồm có hỗ trợ cú pháp hướng đối tượng và nhiều cú pháp ngôn ngữ nhất quán khác.
+    </p>
+    <p>Ngôn ngữ hoàn toàn mới đã được công bố dưới một cái tên mới, xóa bỏ mối liên hệ với việc sử dụng vào mục đích cá nhân hạn hẹp mà cái tên PHP/FI 2.0 gợi nhắc. Nó đã được đặt tên ngắn gọn là 'PHP', một kiểu viết tắt hồi quy của "PHP: Hypertext Preprocessor".
+    </p>
+    <p>Vào cuối năm 1998, PHP đã phát triển được con số cài đặt lên tới hàng chục ngàn người sử dụng và hàng chục ngàn Web site báo cáo là đã cài nó. Vào thời kì đỉnh cao, PHP 3.0 đã được cài đặt cho xấp xỉ 10% số máy chủ Web có trên mạng Internet.
+    </p>
+    <p>PHP 3.0 đã chính thức được công bố vào tháng 6 năm 1998, sau thời gian 9 tháng được cộng đồng kiểm nghiệm.</p>
+    <h4>PHP 4 (2000)</h4>
+    <p>Vào mùa đông năm 1998, ngay sau khi PHP 3.0 chính thức được công bố, Andi Gutmans và Zeev Suraski đã bắt đầu bắt tay vào việc viết lại phần lõi của PHP. Mục đích thiết kế là nhằm cải tiến tốc độ xử lý các ứng dụng phức tạp, và cải tiến tính mô đun của cơ sở mã PHP. Những ứng dụng như vậy đã chạy được trên PHP 3.0 dựa trên các tính năng mới và sự hỗ trợ khá nhiều các cơ sở dữ liệu và API của bên thứ ba, nhưng PHP 3.0 đã không được thiết kế để xử lý các ứng dụng phức tạp như thế này một cách có hiệu quả.
+    </p>
+    <p>Một động cơ mới, có tên 'Zend Engine' (ghép từ các chữ đầu trong tên của Zeev và Andi), đã đáp ứng được các nhu cầu thiết kế này một cách thành công, và lần đầu tiên được giới thiệu vào giữa năm 1999. PHP 4.0, dựa trên động cơ này, và đi kèm với hàng loạt các tính năng mới bổ sung, đã chính thức được công bố vào tháng 5 năm 2000, gần 2 năm sau khi bản PHP 3.0 ra đời. Ngoài tốc độ xử lý được cải thiện rất nhiều, PHP 4.0 đem đến các tính năng chủ yếu khác gồm có sự hỗ trợ nhiều máy chủ Web hơn, hỗ trợ phiên làm việc HTTP, tạo bộ đệm thông tin đầu ra, nhiều cách xử lý thông tin người sử dụng nhập vào bảo mật hơn và cung cấp một vài các cấu trúc ngôn ngữ mới.
+    </p>
+    <p>Với PHP 4, số nhà phát triển dùng PHP đã lên đến hàng trăm nghìn và hàng triệu site đã công bố cài đặt PHP, chiếm khoảng 20% số tên miền trên mạng Internet.
+    </p>
+    <p>Nhóm phát triển PHP cũng đã lên tới con số hàng nghìn người và nhiều nghìn người khác tham gia vào các dự án có liên quan đến PHP như PEAR, PECL và tài liệu kĩ thuật cho PHP.
+    </p>
+    <h4>PHP 5 (2005)</h4>
+    <p>Sự thành công hết sức to lớn của PHP 4.0 đã không làm cho nhóm phát triển PHP tự mãn. Cộng đồng PHP đã nhanh chóng giúp họ nhận ra những yếu kém của PHP 4 đặc biệt với khả năng hỗ trợ lập trình hướng đối tượng (OOP), xử lý XML, không hỗ trợ giao thức máy khách mới của MySQL 4.1 và 5.0, hỗ trợ dịch vụ web yếu. Những điểm này chính là mục đích để Zeev và Andi viết Zend Engine 2.0, lõi của PHP 5.0. Một thảo luận trên Slashdot đã cho thấy việc phát triển PHP 5.0 có thể đã bắt đầu vào thời điểm tháng 12 năm 2002 nhưng những bài phỏng vấn Zeev liên quan đến phiên bản này thì đã có mặt trên mạng Internet vào khoảng tháng 7 năm 2002. Ngày 29 tháng 6 năm 2003, PHP 5 Beta 1 đã chính thức được công bố để cộng đồng kiểm nghiệm. Đó cũng là phiên bản đầu tiên của Zend Engine 2.0. Phiên bản Beta 2 sau đó đã ra mắt vào tháng 10 năm 2003 với sự xuất hiện của hai tính năng rất được chờ đợi: Iterators, Reflection nhưng namespaces một tính năng gây tranh cãi khác đã bị loại khỏi mã nguồn. Ngày 21 tháng 12 năm 2003: PHP 5 Beta 3 đã được công bố để kiểm tra với việc phân phối kèm với Tidy, bỏ hỗ trợ Windows 95, khả năng gọi các hàm PHP bên trong XSLT, sửa chữa nhiều lỗi và thêm khá nhiều hàm mới. PHP năm bản chính thức đã ra mắt ngày 13 tháng 7 năm 2004 sau một chuỗi khá dài các bản kiểm tra thử bao gồm Beta 4, RC 1, RC2, RC3. Mặc dù coi đây là phiên bản sản xuất đầu tiên nhưng PHP 5.0 vẫn còn một số lỗi trong đó đáng kể là lỗi xác thực HTTP.
+    </p>
+    <p>Ngày 14 tháng 7 năm 2005, PHP 5.1 Beta 3 được PHP Team công bố đánh dấu sự chín muồi mới của PHP với sự có mặt của PDO, một nỗ lực trong việc tạo ra một hệ thống API nhất quán trong việc truy cập cơ sở dữ liệu và thực hiện các câu truy vấn. Ngoài ra, trong PHP 5.1, các nhà phát triển PHP tiếp tục có những cải tiến trong nhân Zend Engine 2, nâng cấp mô đun PCRE lên bản PCRE 5.0 cùng những tính năng và cải tiến mới trong SOAP, streams và SPL.
+    </p>
+    <h4>PHP 6</h4>
+    <p>Phiên bản không được phát  hành</p>
+    <h4>PHP 7 (2015)</h4>
+    <p>Cải tiến tốc độ xử lý của PHP và hỗ trợ các tính năng mới như: khai báo kiểu dữ liệu chính xác, toán tử kiểm tra null <code>??</code>, lớp ẩn danh, từ khóa <code>use</code> để sử dụng <code>namespace</code> ...</p>
+
+    <h3 id="su-can-thiet">1.2 Vai trò của PHP</h3>
+    <p>PHP là ngôn ngữ phổ biến trên thế giới được sử dụng bởi nhiều công ty / doanh nghiệp lớn như Google, Facebok, WordPress, Wikipedia, Yahoo ...</p>
+    <p>Hiện nay số lượng ứng dụng web chạy bằng PHP trên thế giới khoảng 80%</p>
+    <p>PHP dễ học, kế thừa cú pháp từ ngôn ngữ C, PHP có thể tạo ra các loại ứng dụng đa nền tảng:</p>
+    <ul>
+      <li>Ứng dụng chạy trên máy chủ (Server-side script)</li>
+      <li>Các ứng dụng Desktop có UI (<a href="https://php.net/ui">GUI Extensions</a>)</li>
+      <li>Các ứng dụng chạy với dòng lệnh</li>
+    </ul>
+    <p>Do gần với C / C++, hỗ trợ lập trình hướng đối tượng nên có thể dùng PHP để học lập trình cơ bản, từ nền tảng đó có thể học các loại ngôn ngữ khác như Java, C# ... dễ dàng hơn.</p>
+  </div>
+  <h2 id="setup" class="text-danger">2. Cài đặt môi trường phát triển ứng dụng PHP</h2>
+  <div>
+      <p>Để phát triển ứng dụng PHP cần chuẩn bị môi trường phát triển (gồm phần mềm PHP),  nếu cài đặt đầy đủ một hệ thống thì cần có thêm máy chủ web như (Apache, IIS ...) và hệ quản trị cơ sở dữ liệu (như MySQL, SQL Server, MariaDb ...). Ở đây sẽ chọn cài đặt <strong>WampServer</strong> vì nó bao gồm PHP, Apache, MySQL</p>  
+      <p>Chọn một IDE (Môi trường phát triển tích hợp - Integrated Development Environment) thích hợp. Có rất nhiều IDE để chọn như <a href="https://www.jetbrains.com/phpstorm/eap/" target="_blank">PHP Storm</a>, 
+        <a href="https://netbeans.org/" target="_blank">Netbeans</a>, 
+        <a href="https://www.zend.com/en/products/studio" target="_blank">ZendStudio</a>,
+        <a href="https://visualstudio.microsoft.com/" target="_blank">Visual Studio</a>, 
+        <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>  ... Ở đây chọn sử dụng <strong>Visual Studio Code</strong></p>
+  <p>Tải toàn các gói phần mềm cần thiết:  <a
+    style="font-size: 50px"
+    href="https://xuanthulab.net/public/setup-php.zip">DOWNLOAD PHP-SETUP</a></p>
+  <h3 id="WampServer">2.1. Cài đặt PHP, APACHE, MYSQL với WampServer</h3>
+  <p><strong>WampServer</strong> là một phần mềm phối hợp nền tảng dành cho Windows, nó bao gồm máy chủ Apache, ngôn ngữ lập trình PHP và hệ quản trị CSDL MySQL. Với WampServer nó cung cấp môi trường hoàn chỉnh để chạy PHP</p>
+  <P><strong>B1) Cài đặt thư viện Visual C++</strong></P>
+  <p class="alert alert-danger">Đảm bảo Windows có cài đặt Visual C++ Redistributable for Visual Studio 2012 <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30679" target="_blank">https://www.microsoft.com/en-us/download/details.aspx?id=30679</a> (vào đường link và chọn đúng phiên bản phù hợp với hệ điều hành để tải về).
+  <br><br>
+  Tương tự cài đặt Visual C++ Redistributable for Visual Studio 2015 <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48145" target="_blank">https://www.microsoft.com/en-us/download/details.aspx?id=48145</a>
+  </p>
+  <P><strong>B2) Cài đặt WampServer</strong></P>
+
+  <p>Tải và cài đặt WampServer tại địa chỉ: <a target="_blank" href="http://www.wampserver.com/en/#download-wrapper">http://www.wampserver.com/en/</a></p>
+  <p>Chọn đúng phiên bản và bấm vào <code>download directly</code> để tải về.</p>
+  <img src="../images/001.png" alt="001">
+  <p>Tiến hành chạy cài đặt chọn thư mục cài đặt là <code>c:\wamp64</code></p>
+  <img src="../images/002.png" alt="">
+  <P><strong>B3) Thiết lập biến môi trường PATH</strong></P>
+  <img src="../images/003.png" alt="">
+
+  <p>Mở <strong>Contol Panel > System</strong> rồi chọn <strong class="badge badge-danger">1</strong> <strong>Advanced system settings</strong></p>
+  <p><strong class="badge badge-danger">2</strong> chọn mục <strong>Environment Variables</strong> của hộp thoại <strong>System Properties</strong></p>
+  <p>Tại hộp thoại <strong>Environment Variables</strong> kích đúp vào <strong class="badge badge-danger">3</strong> <strong>Path</strong></p>
+  <p>Tại hộp thoại <strong>Edit Enviroment Variable</strong> bấm vào mục <strong class="badge badge-danger">4</strong> <strong>New ...</strong> để tạo ra một biến môi trường mới. Rồi bấm vào <strong class="badge badge-danger">5</strong> <strong>Browse..</strong> để gán đường dẫn PHP cho biến môi trườn này</p>
+  <p>Ở cửa sổ <strong>Browse for Folder</strong> chọn đến đường dẫn cài đặt <strong class="badge badge-danger">6</strong> PHP đó là: <code>C:\wamp64\bin\php\php7.2.18</code></p>
+  <p>Nhấn OK để đóng các hộp thoại</p>
+  <P><strong>B4) Kiểm tra hệ thống</strong></P>
+  <p>Sau khi hoàn thành cài đặt và thiết lập biến môi trường như trên hãy khởi động lại máy.</p>
+  <p><strong>Kiểm tra PHP</strong> mở <code>cmd</code> hoặc <code>PowerShell</code> và gõ lệnh:</p>
+  <pre class="prettyprint lang-php p-2  ">php -v</pre>
+  <p>Nếu có xuất hiện thông tin phiên bản PHP thì php cài đặt thành công</p>
+  <img src="../images/004.png" alt="">
+  <p class="pt-4"><strong>Kiểm tra WampServer</strong> (chạy 3 dịch vụ Apache, MySQL, PHP)</p>
+  <p>Khởi động <code>WampServer</code> bằng cách kích đúp biểu tượng của nó trên Desktop. Sau khi WampServer khởi động xong có biểu tượng icon màu xanh trên TaskBar chứng tỏ tất các các dịch vụ cần thiết đang chạy.</p>  
+  <p>Mặc định máy chủ Apache lắng nghe ở cổng <code>80</code>, có thể truy cập trừ trình duyệt với địa chỉ <code>http://127.0.0.1</code> hoặc <code>http://localhost</code></p>
+  <p>Nếu từ trình duyệt thấy nội dung như sau thì WampServer đã hoạt động chính xác:</p>  
+  <img src="../images/005.png" alt="">
+
+  <p class="alert alert-danger">Thư mục làm việc mặc định là <code>C:\wamp64\www</code>, trong thư mục này có thể tạo các thư mục con để chứa dự án mã nguồn PHP và gọi PHP chạy từ trình duyệt</p>
+ 
+
+</div>
+<h3 id="vsc">2.2. Cài đặt Visual Studio Code</h3>
+<div>
+    <img src="../images/006.png" alt="">
+    <p class="text-center">Màn hình Visual Studio Code</p>
+    <hr>
+    <div class="row">
+
+        <div class="col-9">
+            <p>
+                <code>Visual Studio Code</code> là một trình biên tập mã được phát triển bởi Microsoft dành cho Windows, Linux và macOS. Nó hỗ trợ chức năng debug, đi kèm với Git, có syntax highlighting, tự hoàn thành mã thông minh, snippets, và cải tiến mã nguồn. Nó miễn phí và là phần mềm mã nguồn mở.
+            </p>
+            <p>Visual Studio Code được xếp hạng là trình biên tập mã phổ biến nhất, Visual Studio Code có thể được mở rộng qua plugin.</p>
+            <p>Visual Studio Code có thể tùy biến để phát triển các ứng dụng bằng nhiều loại ngôn ngữ lập trình như C, C++, Java, PHP, JavaScript ...</p>
+
+        </div>
+        <div class="col-3 text-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Visual_Studio_Code_1.18_icon.svg/129px-Visual_Studio_Code_1.18_icon.svg.png" alt=""></div>
+
+    </div>
+    <hr>
+    <p><strong>Cài đặt Visual Studio Code</strong></p>
+    <p>Tải về và tiến hành chạy file cài đặt tại <a target="_blank" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>, sau khi hoàn thành cài đặt chạy chương trình nó có giao diện như hình trên.</p>
+    <p><strong class="text-success">Cài đặt phần mở rộng để phát triển PHP</strong></p>
+    <p><strong class="text-white bg-danger px-2">PHP IntelliSense</strong></p>
+
+    <p>Extension này hỗ trợ tự động hoàn thành câu lệnh PHP khi  đang viết, tự động xuất hiện các gợi ý, hỗ trợ tham  khảo về cú pháp PHP ...</p>
+    <img src="../images/007.png" alt="">
+    <p>Chạy VSC, chọn biểu tượng <strong>Extensions</strong> <strong class="badge badge-danger">1</strong>, sau đó gõ vào mục tìm kiếm từ khóa php <strong class="badge badge-danger">2</strong></p>
+    <p>Chọn Extension có tên <strong>PHP IntelliSense</strong> <strong class="badge badge-danger">3</strong> sau đó bấm vào mục <strong>Install</strong> <strong class="badge badge-danger">4</strong></p>
+    <p>Để tránh xung đột cần thiết lập <code>php.suggest.basic</code> bằng <code>false</code>. Mở thiết lập VSC <strong>Setting</strong> bằng phím <kbd>CTRL,</kbd>, sau đó gõ vào <code>php.suggest.basic</code>, bỏ đánh dấu mục <em>Controls whether the build-in PHP language ...</em></p>
+    <img src="../images/008.png" alt="">
+
+    <p class="pt-4">Khi soạn code cần gợi ý nhấn phím <kbd>ctrl + space</kbd></p>
+    <img src="../images/011.png" alt="">
+
+    <p>Bằng cách cài Extension tương tự, tiến hành cài đặt thêm các Extension sau:</p>
+    <p><strong class="text-white bg-danger px-2">Code Runner</strong></p>
+    <p>Cho phép chạy các ngôn ngữ lập trình: C, C++, Java, JavaScript, PHP, Python, Perl, Perl 6, Ruby, Go, Lua, Groovy, PowerShell, BAT/CMD, BASH/SH, F# Script, F# (.NET Core), C# Script, C# (.NET Core), VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml Script, R, AppleScript, Elixir, Visual Basic .NET, Clojure, Haxe, Objective-C, Rust, Racket, AutoHotkey, AutoIt, Kotlin, Dart, Free Pascal, Haskell, Nim, D, Lisp, Kit, ...
+    </p>
+    <p>Mở <strong>Setting</strong>, chọn mục <strong>Run Code Configution</strong> sau đó đánh dấu vào các mục: <em>Run In Terminal</em>, <em>Save All Files Before Run</em></p>
+    <img src="../images/009.png" alt="">
+    <p>Có thêm menu context (nhấn phải chuột vào tên file) <strong>Run Code</strong>, chọn nó sẽ thi hành code ngay lập tức</p>
+    <img src="../images/010.png" alt="">
+
+
+    <p><strong class="text-white bg-danger px-2">HTML CSS Support</strong></p>
+    <p>Hỗ trợ biên tập mã HTML, CSS</p>
+    <p><strong class="text-white bg-danger px-2">IntelliSense for CSS class names in HTML</strong></p>
+    <p>Hỗ trợ gợi ý, tự động điền code khi gán class CSS vào HTML</p>
+</div>
+
+<h3 id="newproject">2.3. Tạo mới, ghi một chương trình PHP</h3>
+<div>
+<p><strong class="text-success" id="run1">2.3.1. Chạy mã PHP từ dòng lệnh</strong></p>
+<p>Khi bắt đầu một dự án PHP, nên tạo một thư mục dự án, trong thư mục đó dành để chứa các file, thư mục mã nguồn, dữ liệu <i>(Hình ảnh, Video, CSS, JS ...)</i> của dự án.</p>
+<p>Các File mã nguồn PHP có phần mở động là <code>.php</code></p>
+<p>Ví dụ tạo ra một thư mục dự án tên là <code>app1</code>, trong thư mục này tạo ra một file mã nguồn PHP đầu tiên đặt tên là <code>vidu1.php</code></p>
+<p>Có thể dùng PowerShell vào thư mục dự án <code>app1</code> bằng lệnh <code>cd</code> để tạo file bằng lệnh:</p>
+<pre class="prettyprint lang-sh">echo $null >> vidu1.php</pre>
+<p>Hoặc dùng trực tiếp Visual Studio Code để tạo và mở soạn thảo với lệnh <code>code vidu1.php</code></p>
+<p>Dùng chương trình soạn thảo text bất kỳ (Notepad, NotePad++, Visual Studio Code ...) để soạn thảo với nội dung sau:</p>
+
+<pre class="prettyprint lang-php">{{'
+<?php
+    echo "Xin chào PHP";
+?>
+'|escape }} 
+</pre>  
+<p>Chạy đoạn mã PHP này sẽ in ra dòng <code>Xin chào PHP</code></p>
+<p>Để chạy <code>vidu1.php</code> dùng PS vào thư mục chứa dự án và gõ lệnh: <code>php vidu1.php</code></p>
+
+<img src="../images/012.png" alt="">
+<p>Như vậy đã chạy một đoạn mã PHP thành công</p>
+ 
+<p><strong class="text-success" id="run2">2.3.2. Soạn thảo mã PHP, chạy PHP từ VSC</strong></p>
+<p>Chạy <code>VSC</code>, mở thư mục chứa dự án bằng menu lệnh: <code>File > Open Folder ...</code></p>
+<p class="alert alert-danger">Nếu đang từ PowerShell gõ lệnh <code>code thu_muc</code> để mở thu_muc, hoặc <code>code .</code> để mở thư mục hiện tại</p>
+<img src="../images/013.png" alt="">
+<ul class="list-group">
+   <li class="list-group-item">
+    <strong class="badge badge-danger">1</strong> 
+      Bật duyệt file trên thư mục dự án
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">2</strong> 
+      Tìm kiếm file (theo nội dung chứa trong file)
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">3</strong> 
+      Khu vực hiệ thị các file đang được mở để soạn thảo
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">4</strong> 
+      Thư mục dự án và các file, folder trong dự án. Để mở một file nháy kép vào tên file.
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">5</strong> 
+      Tạo file mới
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">6</strong> 
+      Tạo thư mục mới
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">7</strong> 
+      Khu vực soạn thảo file đang mở
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">8</strong> 
+      Thi hành file (chạy mã - code)
+   </li>
+   <li class="list-group-item">
+    <strong class="badge badge-danger">9</strong> 
+       <code>Terminal</code> (CMD) tích hợp vào VSC
+   </li>
+</ul>
+
+<p>Ví dụ bấm vào <strong class="badge badge-danger">9</strong> tạo file mới có tên là <code>vidu2.php</code> </p>
+<p>Sau đó nhập nội dung:</p>
+<pre class="prettyprint lang-php">{{'
+  <?php
+    echo "Hôm nay là ngày " . date("d/m/Y");
+  '|escape }} 
+</pre> 
+<p>Bấm vào chạy code <strong class="badge badge-danger">8</strong></p> 
+<img src="../images/014.png" alt="" class="mb-4">
+<p><strong class="text-success my-4" id="run3">2.3.3. Chạy thư mục code PHP như một trang web</strong></p>
+<p>Để chạy một thư mục code PHP bằng cách truy cập chúng từ trình duyệt (chạy một Webserver PHP) ở đây sẽ tạo máy chủ Webserver trực tiếp từ PHP (chưa dùng đến Apache Webserver) thực hiện như sau:</p>
+<p>Từ <code>Terminal</code> vào thư mục chứa code PHP, gõ lệnh:</p>
+<pre class="prettyprint language-sh p-2">php -S 0.0.0.0:8080</pre>
+<p>Trong đó cổng <code>8080</code> tự chọn để tránh xung đột với cổng 80 mặc định. Nếu muốn sử dụng cổng <code>80</code> hãy dừng Apache và gõ lệnh:</p>
+<pre class="prettyprint language-sh p-2">php -S 0.0.0.0:80</pre>
+<img src="../images/015.png" alt="">
+
+<p>Khi Webserver do PHP tạo ra đang chạy thì có thể truy cập đến ứng dụng thông qua trình duyệt, ở các địa chỉ như <code>http://localhost:8080</code>,
+<code>http://127.0.0.1:8080</code> hoặc từ máy khác bằng <code>http://ip:8080</code>
+</p>
+<p>Mặc định nó sẽ tìm và chạy file <code>index.php</code>, nếu muốn chạy các file khác gõ theo địa chỉ <code>http://localhost:8080/vidu1.php</code></p>
+
+<p>Kết thúc Webserver bằng cách gõ vào <code>Terminal</code> phím <kbd>CTRL + C</kbd></p>
+
+
+
+ <p><strong class="text-success my-4" id="tagphp">2.3.4. Thẻ php</strong></p>
+<p>Các đoạn mã PHP được đặt trong thẻ php mở đầu là <code>&lt;php</code> và kết thúc bởi ký hiệu <code>&gt;?</code> </p>
+<pre class="prettyprint lang-php">{{'
+  <?php
+    // Mã PHP ở đây
+  ?>
+  
+  Nội dung ngoài thẻ php, thường là các mã HTML
+
+  <?php
+    //...
+  
+  ?>  
+  '|escape }} 
+</pre> 
+<p>Những nội dung văn bản bên ngoài thẻ php mặc định khi chạy nó xuất ra đúng nội dung đó.</p>
+<p>Ví dụ, HTML và PHP pha trộn với nhau: (<code>vidu3.php</code>)</p>
+
+<pre class="prettyprint lang-php p-2">{{'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đây là trang HTML có mã PHP</title>
+</head>
+<body>
+    <h1>Ví dụ PHP</h1>
+    <?php
+        $a = 10;
+        $b = 2.2;
+        $c = $a * $b;
+        echo "Tổng $a * $b = $c";
+    ?>
+
+</body>
+</html>'|escape }}</pre> 
+<p>Thực hiện chạy file trên qua trình duyệt</p>
+<img src="../images/016.png" alt=""> 
+</div>
+<h2 id="help" class="text-danger">3. Sử dụng sự trợ giúp</h2>
+<div>
+   <p>Trong quá trình phát triển dự án PHP, các nguồn tài nguyên sau có thể tham khảo về cú pháp và các thư viện</p>
+   <ul>
+     <li>Tham khảo về cú pháp và các đặc điểm ngôn ngữ lập trình PHP từ website của PHP: <a href="https://www.php.net/manual/en/langref.php" target="_blank">https://www.php.net/manual/en/langref.php</a></li>
+     <li>Khi đang soạn thảo code, gõ một phần tên hàm - cần sự gợi ý từ các Extension đã cài đặt gõ tổ hợp phím <kbd>CTRL + SPACEBAR</kbd> ở cuối từ cần gõ (xem hình dưới). <br>
+      <img src="../images/017.png" alt="">
+    </li>
+    <li class="py-3">Khi tham khảo về tham số của một hàm, để con trỏ ở phần tham số hàm và nhấn tổ hợp phím <kbd>CTRL+SHIFT+SPACEBAR</kbd> (xem hình dưới)
+    <br>
+    <img src="../images/018.png" alt="">
+  </li>
+  <li>Khi để con trỏ chuột trên tên hàm đang soạn thảo, nó cũng sẽ hiện thị thông tin cơ bản về hàm.</li>
+  <br>
+  <img src="../images/019.png" alt="">
+
+   </ul>
+</div>
+
+</main>
+

@@ -1,0 +1,648 @@
+---
+layout: default
+title: Cơ bản về PHP
+permalink: co-ban/
+---
+
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+        <ul class="section-nav">
+            <li>
+               <a href="#tukhoakihieu">1. Từ khóa và kí hiệu </a>
+               <ul>
+                  <li><a href="#tukhoa">1.1. Từ khóa</a></li>
+                  <li><a href="#kihieu">1.2. Ký hiệu</a></li>
+               </ul>
+            </li>
+            <li>
+              <a href="#cackieudulieu">2. Các kiểu dữ liệu sơ cấp</a>
+              <ul>
+                 <li><a href="#integer">2.1. Kiểu số nguyên</a></li>
+                 <li><a href="#float">2.2. Kiểu dấu phẩy động</a></li>
+                 <li><a href="#string">2.3. Kiểu chuỗi ký tự</a></li>
+                 <li><a href="#boolean">2.4. Kiểu logic</a></li>
+              </ul>
+           </li>
+           <li>
+            <a href="#bienhangbieuthu">3. Biến, hằng, biểu thức</a>
+            <ul>
+               <li><a href="#khaibaobien">3.1. Phân loại, khai báo và sử dụng biến</a></li>
+               <li><a href="#hangso">3.2. Hằng</a></li>
+               <li><a href="#bieuthuc">3.3. Biểu thức</a></li> 
+            </ul>
+         </li>
+         <li>
+          <a href="#cautrucchuongtrinh">4. Cấu trúc một chương trình</a>
+          <ul>
+             <li><a href="#thongdich">4.1. Thông dịch trong PHP</a></li>
+             <li><a href="#cautruc">3.2. Cấu trúc một chương trình PHP</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#caulenhphp">5. Câu lệnh</a>
+          <ul>
+             <li><a href="#khainiemcaulenh">5.1. Khái niệm</a></li>
+             <li><a href="#lenhgan">5.2. Lệnh gán</a></li>
+             <li><a href="#nhapxuat">5.3. Nhập và xuất dữ liệu</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/hoc-php-2019/tong-quan/#newproject">6. Thực thi chương trình PHP</a>
+        </li>
+
+        </ul>
+</div>
+     
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+    <h1 class="display-4">CÁC THÀNH PHẦN CƠ BẢN TRONG PHP <small>(09)</small> </h1>
+    <hr>
+    <a href="https://raw.githubusercontent.com/xuanthulabnet/hoc-php-2019/master/docs/chuong-2.pptx">PowerPoint C2</a>
+
+    <div>
+      <h2 id="tukhoakihieu" class="text-danger">1. Từ khóa và kí hiệu trong PHP</h2>
+      <h3 id="tukhoa">1.1 Từ khóa</h3>
+      <p>Trong PHP có vài chục từ khóa và hằng số được định nghĩa trước, không được đặt tên hằng số trùng
+        với những từ khóa này. Các từ khóa được viết theo một quy tắc nhất định để tạo ra chương trình PHP.</p>
+      <p>Ví dụ từ khóa <code>for</code> để tạo lệnh vòng lặp, từ khóa <code>if</code> để tạo ra cấu trúc dẽ nhánh, <code>include</code> để gộp file mã nguồn ...</p>  
+
+      <p>Danh sách đầy đủ các từ khóa: <span class="text-danger">__halt_compiler, abstract, and, array, as, break, callable, case, catch, class, clone, const, continue, declare, default, die, do, echo, else, elseif, empty, enddeclare, endfor, endforeach, endif, endswitch, endwhile, eval, exit, extends, final, for, foreach, function, global, goto, if, implements, include, include_once, instanceof, insteadof, interface, isset, list, namespace, new, or, print, private, protected, public, require, require_once, return, static, switch, throw, trait, try, unset, use, var, while, xor</span> </p> 
+      <h3 id="kihieu">1.2 Kí hiệu</h3>
+      <p>Để viết mã PHP sử dụng các ký tự - ký hiệu sau:</p>
+      <p>Các ký tự chữ và số: <code>A ... Z, a .. z, 0 .. 9</code> kể cả các ký tự Unicode được dùng để đặt tên các biến, hàm ...</p> 
+<pre class="prettyprint lang-php">{{'
+<?php
+    $họ_và_tên = "Nguyễn Văn A";
+    echo $họ_và_tên; 
+?>'|escape }}</pre>   
+        <p>Các ký hiệu toán học: <code>+, -,  *,  /,  =, &gt;, &lt;, (, ) </code></p>
+        <pre class="prettyprint lang-php">{{'
+<?php
+   $ketqua = (5 + 2.2) / 3;
+   echo $ketqua;
+?>
+'|escape }}</pre> 
+<p>Các ký hiệu đặc biệt như: <code>.</code>, <code>[]</code>, <code>$</code>, ký hiệu xuống dòng <code>\n</code>, ký hiệu tab <code>\t</code></p>
+<pre class="prettyprint lang-php">{{'
+  <?php
+    $ho = "Nguyễn Văn";
+    $ten = "A";
+ 
+    $tendaydu =$ho . " " . $ten;
+    
+    echo $tendaydu;
+  ?>'|escape }}</pre> 
+    </div> 
+
+    <div>
+        <h2 id="cackieudulieu" class="text-danger">2. Các kiểu dữ liệu sơ cấp</h2>
+        <p>Các kiểu dữ liệu nguyên tố định nghĩa trước trong PHP gồm có: boolean, integer, float (double), string </p>
+        <h3 id="integer">2.1. Kiểu số nguyên</h3>
+        <p>Kiểu số nguyên biểu diễn các số trong tập N = {..-2, -1, 0, 1, 2 ...}</p>
+        <p>Giá trị lớn nhất, nhỏ nhất nó biểu diễn được ở dạng số nguyên tùy thuộc vào hệ thống đang chạy PHP (32 hay 64 bit), kiểm tra bằng hằng số <code>PHP_INT_MAX</code> và <code>PHP_INT_MIN</code></p>
+         <pre class="prettyprint lang-php">{{'
+<?php
+   echo "Số nguyên lớn nhất: " . PHP_INT_MAX;
+   echo "\n";
+   echo "Số nguyên nhỏ nhất: " . PHP_INT_MIN;
+?>'|escape }}</pre>  
+<h3 id="float">2.2. Kiểu dấu phảy chấm động (số thực)</h3>
+<p>Biểu diễn số thực (có phần nguyên và phần thập phân sau dấu chấm), nhập một số thực sử dụng theo cách:</p>
+      <ul>
+         <li>Số thập phân: <code>1.20</code>  </li>
+         <li>Số dạng khoa học: <code>2E3</code>, <code>2E-3</code></li>
+      </ul>            
+      <h3 id="string">2.3. Kiểu chuỗi ký tự (sâu ký tự, text)</h3>
+<p>Một chuỗi ký tự là tập hợp các ký tự để biểu diễn một văn bản. Một ký tự mặc định là chiếm một <code>byte</code> bộ nhớ (một ký tự ngoài 256 ký tự chuẩn, Unicode chiếm 2byte)</p>
+      <p>Biểu diễn chuỗi ký tự hoặc dùng cắp nháy đơn <code>""</code> hoặc nháy kép <code>''</code></p>
+      <h3 id="boolean">2.4. Kiểu logic</h3>
+      <p>Kiểu này để thực hiện các phép toán liên quan đến logic, nó nhận giá trị <code>true</code> hoặc <code>false</code> mang ý nghĩa đúng, sai.</p>
+      <pre class="prettyprint lang-php">{{'
+<?php
+    $ketqua = 5 > 4;
+    var_dump($ketqua);
+ ?>'|escape }}</pre>
+    </div> 
+
+    <div>
+      <h2 id="bienhangbieuthu" class="text-danger">3. Biến, hằng, biểu thức</h2>
+      <h3 id="khaibaobien">3.1. Phân loại, khai báo và sử dụng biến</h3>
+      <p>Biến là cách lưu trữ thông tin trong chương trình PHP. Những điều cơ bản về biến của PHP gồm có:</p>
+      <ul>
+         <li>Tất cả các biến của PHP đều có tên bắt đầu bằng ký tự dollar (<code>$</code>). Ví dụ <code>$a</code>, <code>$name</code>, <code>$class</code> ...</li>
+         <li>Giá trị của biến là giá trị được gán sau cùng bằng toán tử gán <code>=</code>. Ví dụ $a = 5;</li>
+         <li>Trong PHP có thể khai báo biến trước khi gán nhưng không bắt buộc. Nhưng nhớ là khi sử dụng trong biểu thức thì biến đã được khai báo hoặc đã được gán.</li>
+         <li>&nbsp;Biến trong PHP không bị cố định sử dụng với một kiểu dữ liệu nào đó, nó có thể là số, ký tự, sâu ký tự. Không như C# khi khai báo biến là số nguyên mà gán cho biến đó sâu ký tự thì là lỗi, nhưng PHP không có cơ chế này. Điều này được cái linh hoạt nhưng lại dễ để lại bugs.</li>
+         <li>Một biến được sử dụng trước khi gán giá trị cho nó thì nó có các giá trị mặc định.</li>
+         <li>PHP có cơ chế tự động chuyển kiểu dữ liệu tùy theo tình huống sử dụng. Ví dụ biến $a = 5 ($a lưu trữ số nguyên 5) thì tùy cách sử dụng sau này có thể hiểu $a là số 5, $ là ký tự '5', $a là sâu ký tự: $b = $a+5; $c = $a.'10';</li>
+      </ul>
+      <h4>Quy tắc đặt tên biến</h4>
+      <p>Ngoài ký hiệu $ cho biết sau đó là một tên biến, thì tên biến có các quy tắc sau:</p>
+      <ul>
+         <li>Bắt đầu bằng mọt ký tự chữ<code>(A-z)</code> hoặc bàng dấu <code>_</code> (gạch dưới):&nbsp;Ví dụ các biến lợp lệ $a, $Abc, $_a; không hợp lệ như $1a;</li>
+         <li>Không được sử dụng các ký tự đặc biệt:<code>+</code>,<code>-</code>,<code>%</code>,<code>&amp;</code> ...</li>
+      </ul>
+      <p><strong>Phân loại biến</strong></p>
+      <p>Phạm vị có thể hiệu là vùng mà biến có hiệu lực. PHP có 4 loại phạm vị sau:</p>
+      <ul>
+         <li>Các biến cục bộ</li>
+         <li>Các tham số của hàm</li>
+         <li>Các biến toàn cục</li>
+         <li>Các biến tĩnh</li>
+      </ul>
+      <p class="text-danger">Biến cục bộ</p>
+      <p>Biến khai báo bên trong một hàm là cục bộ, biến đó chỉ sử dụng trong nội bộ hàm. Nếu gán giá trị cho biến ở phạm vi bên ngoài khai báo hàm thì không có ý nghĩa gì cả.</p>
+      <pre class="prettyprint lang-php">
+&lt;?php
+      $x = 100;
+
+      function abc() {
+            $x = 20;
+            echo "Biến x trong hàm là $x \n";
+      }
+   
+   
+      abc();
+      echo "Biến x ngoài hàm là $x \n"; 
+?&gt;
+</pre>
+<p class="text-danger">Biến toàn cục</p>
+<p>Khác với biến cục bộ, biến toàn cục truy cập được từ nhiều nơi trong chương trình. Khai báo và sử dụng biến toàn cục thì khi khai báo dùng từ khóa GLOBAL.</p>
+<pre class="prettyprint lang-php">
+   &lt;?php
+      $x = 100; 
+
+      function abc() { 
+            global $x;
+            echo "Biến x  là $x \n";
+      }
+
+      abc();
+   ?&gt;
+</pre>
+
+<p class="text-danger">Biến tĩnh</p>
+<p>Biến tĩnh (static), các biến thông thường khai báo trong hàm nó sẽ bị hủy khi hàm thi hành xong (kết thúc), tuy nhiên nếu khai báo là biến tĩnh thì biến này không bị hủy, có thể dùng lại ở lần gọi tiếp theo của hàm. Khai báo bằng từ khóa <code>static</code> trước tên biến.<br>
+   &nbsp;</p>
+<pre class="prettyprint lang-php">
+   &lt;?php
+      function demso() {
+            static $so = 0;
+            $so = $so + 1;
+            echo $so . PHP_EOL;
+      }
+
+      demso();
+      demso();
+      demso();
+   ?&gt;
+</pre>   
+<p class="text-danger">Tham số hàm</p>
+<p>Tham số hàm cũng là một loại biến cục bộ, trình bày chi tiết ở phần học về hàm.</p>
+<h3 id="hangso">3.2. Hằng trong PHP</h3>
+<p>Hằng số là một tên hay định danh cho một giá trị đơn giản. Gọi là hằng số bởi vì giá trị ứng với tên hằng sau khi định nghĩa là không đổi trong quá trình thi hành script. Mặc định hằng số có phân biệt chữ hoa chữ thường. Thông thường viết code thì ta nên đặt tên hằng số bằng các ký tự viết hoa. Một hằng số phải bắt đầu bằng một <code>ký tự chữ</code>&nbsp; (a-Z) hoặc gạch dưới (<code>_</code>), theo sau không được chứa các ký tự đặc biệt.</p>
+<p>Khai báo hằng số với cú pháp</p>
+<pre class="prettyprint lang-php">
+define('ten_hang_so', giá-trị);      
+</pre>   
+<p>Giá trị gán cho hằng số có thể là số, chuỗi ...</p>
+<pre class="prettyprint lang-php">
+&lt;?php   
+   define('MON', 'Thứ Hai');
+   define("TUE", 'Thứ Ba');
+
+   echo MON;
+?&gt;        
+</pre>   
+<strong>Sự khác nhau giữa hằng số và biến</strong>
+<ul>
+      <li>Tên hằng số thi không cần bắt đầu bằng ký tự dollar <code>$</code> như biến.</li>
+      <li>Hằng số không thể sử dụng phép gán giá trị như biến (<code>=</code>), giá trị của nó phải được xác định duy nhất tại hàm define.</li>
+      <li>Hằng số có thể truy cập bất cứ ở đâu mà không giới hạn phạm vị như biến.</li>
+      <li>Ngay sau khi giá trị hằng thiết lập, nó không bị thay đổi hay định nghĩa lại nữa.</li>
+</ul>
+<p>Một số hằng số định nghĩa sẵn trong PHP</p>
+<table class="table">
+      <thead>
+         <tr>
+            <th>Tên hằng</th>
+            <th>Mô tả</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr id="constant.line">
+            <td><code>__LINE__</code></td>
+            <td>Dòng hiện tại của php file.</td>
+         </tr>
+         <tr id="constant.file">
+            <td><code>__FILE__ </code></td>
+            <td>
+            <p>Tên file đầy đủ của script đang thi hành.</p>
+            </td>
+         </tr>
+         <tr id="constant.dir">
+            <td><code>__DIR__</code></td>
+            <td>Tên thư mục đầy đủ của file PHP</td>
+         </tr>
+         <tr id="constant.function">
+            <td><code>__FUNCTION__</code></td>
+            <td>Lấy tên của hàm đang chạy</td>
+         </tr>
+         <tr id="constant.function">
+               <td><code>PHP_EOL</code></td>
+               <td>Ký tự xuống dòng</td>
+         </tr>
+         
+         <tr id="constant.function">
+               <td><code>M_PI</code></td>
+               <td>Số PI</td>
+         </tr>
+         
+      </tbody>
+   </table>
+   <h3 id="bieuthuc">3.3. Biểu thức PHP</h3> 
+<p>Biểu thức là một sự kết hợp giữa các toán tử (operator) và các toán hạng (operand) theo đúng một trật tự nhất định.</p>
+<p>Mỗi toán hạng có thể là một hằng, một biến hoặc một biểu thức khác.</p>
+<p>Trong trường hợp, biểu thức có nhiều toán tử, ta dùng cặp dấu ngoặc đơn () để chỉ định toán tử nào được thực hiện trước.</p>      
+      <p>Ví dụ biểu thức nghiệm của phương trình bậc 2: <code>(-$b + sqrt($delta)) / (2 * $a)</code></p>
+      <p><strong>Toán tử số học</strong></p>
+      <table class="table">
+            <thead>
+            <tr>
+                <th>Toán tử</th>
+                <th>Diễn tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            </thead>
+            <tbody><tr>
+                <td><code>+</code></td>
+                <td>Phép cộng hai số</td>
+                <td>$A + $B : <code> 63 + 70 = 133</code></td>
+            </tr>
+            <tr>
+                <td><code>-</code></td>
+                <td>Phép trừ</td>
+                <td>$A - $B : <code> 63 - 70 = -7</code></td>
+            </tr>
+            <tr>
+                <td><code>*</code></td>
+                <td>Phép nhân</td>
+                <td>$A * $B : <code> 63 * 70 = 4410</code></td>
+            </tr>
+            <tr>
+                <td><code>/</code></td>
+                <td>Phép chia</td>
+                <td>$A / $B : <code>
+                        63 / 70 =                 0.9</code></td>
+            </tr>
+            
+            <tr>
+                <td><code>++</code></td>
+                <td>Phép toán tăng thêm 1 vào biến</td>
+                <td>$A++ kết quả $A = <code>64</code></td>
+            </tr>
+            <tr>
+                <td><code>--</code></td>
+                <td>Phép toán giảm đi giá trị 1</td>
+                <td>$B-- kết quả $B = <code>69</code></td>
+            </tr>
+        </tbody></table>
+   <pre class="prettyprint lang-php">
+   &lt;?php   
+      $a = 10;
+      $b = 20;
+
+      $c = $a + $b;
+      echo "Kết quả phép cộng: $c" . PHP_EOL;
+
+      $c = $a - $b;
+      echo "Kết quả phép trừ: $c". PHP_EOL;
+
+      $c = $a * $b;
+      echo "Kết quả phép nhân: $c". PHP_EOL;
+
+      $c = $a / $b;
+      echo "Kết quả phép chia: $c". PHP_EOL;
+
+      $c = $a % $b;
+      echo "Phần dư phép chia: $c". PHP_EOL;
+      
+         
+      $c = $a++;
+      echo "Thêm một vào $c: $a". PHP_EOL;
+      
+      $c = $a--;
+      echo "Giảm $a đi 1: $c". PHP_EOL;
+
+
+   ?&gt;        
+   </pre>  
+
+
+        <p><strong>Toán tử so sánh</strong></p>
+        <p>Toán tử so sánh trả về kết quả kiểu logic bool (nhận giá trị <code>true</code> hoặc <code>false</code>)</p>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Toán tử</th>
+                <th class="w-50">Diễn tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            </thead>
+            <tbody><tr>
+                <td><code>==</code></td>
+                <td>So sánh bằng:<br>
+                    <code>true</code> nếu hai toán hạng bằng nhau và <code>false</code> nếu khác</td>
+                    <td>$C == $D ≡ <code> 50 == 27 ≡ false</code></td>
+            </tr>
+            <tr>
+                <td><code>!=</code></td>
+                <td>So sánh khác: <br>
+                    nếu hai toán hạng có giá trị khác nhau thì có giá trị <code>true</code>, giá trị
+                    giống nhau thì là <code>false</code></td>
+                <td>$C != $D ≡ <code> 50 != 27 ≡ true</code></td>
+            </tr>
+            <tr>
+                <td><code> &gt; </code></td>
+                <td>So sánh lớn hơn:<br>
+                    <code>true</code> nếu toán hạng thứ nhất lớn hơn toán hạng thứ hai</td>
+                <td>$C &gt; $D ≡ <code> 50 &gt; 27 ≡ true</code></td>
+            </tr>
+            <tr>
+                <td><code> &gt;= </code></td>
+                <td>So sánh lớn hơn hoặc bằng:<br>
+                    <code>true</code> nếu toán hạng thứ nhất lớn hơn hoặc bằng toán hạng thứ hai</td>
+                <td>$C &gt;= $D ≡ <code> 50 &gt;= 27 ≡ true</code></td>
+            </tr>
+            <tr>
+                <td><code> &lt; </code></td>
+                <td>So sánh nhỏ hơn:<br>
+                    <code>true</code> nếu toán hạng thứ nhất nhỏ hơn toán hạng thứ hai</td>
+                <td>$C &gt; $D ≡ <code> 50 &lt; 27 ≡ false</code></td>
+            </tr>
+            <tr>
+                <td><code> &lt;= </code></td>
+                <td>So sánh nhỏ hơn hoặc bằng:<br>
+                    <code>true</code> nếu toán hạng thứ nhất nhỏ hơn hoặc bằng toán hạng thứ hai</td>
+                <td>$C &lt;= $D ≡ <code> 50 &lt;= 27 ≡ false</code></td>
+            </tr>
+        
+        </tbody></table>
+<pre class="prettyprint lang-php">
+&lt;?php   
+   $a = 10;
+   $b = 20;
+
+   if ($a > $b) 
+      echo "$a lớn hơn $b";
+   else
+      echo "$a nhỏ hơn $b";   
+?&gt;        
+</pre>  
+
+<p><strong>Toán sử logic</strong></p>
+<table class="table table-sm">
+      <thead>
+      <tr>
+          <th>Toán tử</th>
+          <th class="w-50">Diễn tả</th>
+          <th>Ví dụ</th>
+      </tr>
+      </thead>
+      <tbody><tr>
+          <td><code>and</code></td>
+          <td>Toán tử và:<br>
+              <code>true</code> nếu hai toán hạng có giá trị <code>true</code></td>
+          <td> ($A and $B) ≡ <code> (52 and 14) ≡              (true and true) ≡
+               true</code>
+          </td>
+      </tr>
+  
+      <tr>
+          <td><code>or</code></td>
+          <td>Toán tử hoặc:<br>
+              <code>true</code> nếu một trong hai toán tử là <code>true</code></td>
+          <td> ($A or $B) ≡ <code> (52 or 14) ≡                 (true or true) ≡
+                  true</code>
+          </td>
+      </tr>
+  
+      <tr>
+          <td><code>&amp;&amp;</code></td>
+          <td>Toán tử và:<br>
+              <code>true</code> nếu hai toán hạng có giá trị <code>true</code></td>
+          <td> ($A &amp;&amp; $B) ≡ <code> (52 &amp;&amp; 14) ≡                 (true &amp;&amp; true) ≡
+                  true</code>
+          </td>
+      </tr>
+  
+      <tr>
+          <td><code>||</code></td>
+          <td>Toán tử hoặc:<br>
+              <code>true</code> nếu một trong hai toán tử là <code>true</code></td>
+          <td> ($A || $B) ≡ <code> (52 || 14) ≡                 (true || true) ≡
+                  true</code>
+          </td>
+      </tr>
+  
+      <tr>
+          <td><code>!</code></td>
+          <td>Toán NOT (phủ định):<br>
+              <code>true</code> nếu giá trị là <code>false</code></td>
+          <td> !($A || $B) ≡ <code> !(52 || 14) ≡                 !(true || true) ≡
+                  false</code>
+          </td>
+      </tr>
+  
+  </tbody></table>
+<pre class="prettyprint lang-php">
+   &lt;?php   
+      $A = true;
+      $B = false;
+
+      $ketqua = $A && $B; 
+      var_dump($ketqua);  
+   ?&gt;        
+</pre>  
+ 
+    </div>
+
+    <div>
+         <h2 id="cautrucchuongtrinh" class="text-danger">4. Cấu trúc một chương trình</h2>
+         <h3 id="thongdich">4.1. Thông dịch trong PHP</h3>
+         <p>Mã nguồn PHP không biên dịch thành mã máy khi phân phối, nó được một trình thông dịch PHP nạp mà biên dịch thành mã máy ở thời điểm thực thi. Chương trình thông dịch chạy PHP này được cài đặt ở phần chương I.</p>
+         <p>Do PHP là ngôn ngữ thông dịch, do đó khi phân phối sản phẩm chính là phân phối mã nguồn PHP</p>
+         <h3 id="cautruc">4.2. Cấu trúc </h3>
+         <p>Một dự án (ứng dụng) PHP được chứa bên trong một thư mục, trong thư mục này có thể tạo ra các thư mục con, từ đó lưu các file mã nguồn với phần mở rộng là <code>.php</code></p>
+         <p>Khi chương trình thông dịch nạp mã PHP, nó sẽ bắt đầu thực thi các đoạn mã chứa trong thẻ <code>php</code></p>
+<pre class="prettyprint lang-php">
+&lt;?php   
+   // mã PHP
+?&gt;        
+</pre>  
+         <p>Mã nguồn PHP có thể chứa trên nhiều file .php khác nhau. Một file PHP này có thể gộp mã của file PHP khác bằng lệnh <code>include "tenfile.php"</code></p>
+<pre class="prettyprint lang-php">
+&lt;?php   
+   include "thuvien/thuvien1.php"; 
+?&gt;        
+</pre> 
+
+<p><strong>Chú thích cho Code PHP </strong></p>
+<p>Khi viết code PHP, có nhiều lúc cần chú thích (comment) để sau này đọc lại dễ hiểu, các dòng chủ thích này không tác động gì đến mã PHP cả, bị bỏ qua (không hiện thị, không thi hành) khi mã được chạy. Có hai loại chú thích, chú thích một dòng và chú thích nhiều dòng.</p>
+<p><i>Chú thích một dòng</i></p>
+<p>Các ký tự trên một dòng đặt sau khí hiệu <code>//</code> hoặc ký hiệu <code>#</code></p>
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   // chú thích
+   # chú thích
+   echo "Hi";
+?&gt;        
+</pre> 
+<p><i>Chú thích nhiều dòng</i></p>
+<p>Nội dung chú thích đặt trong cặp <code>/* ... */</code></p>
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   /*
+    Chú thích 1
+    Chú thích 2
+   */ 
+   echo "Hi";
+?&gt;        
+</pre> 
+
+<p class="alert alert-success">Các khoảng trắng không ảnh hưởng đến mã PHP</p>
+
+    </div>
+
+    <div>
+         <h2 id="caulenhphp" class="text-danger">5. Câu lệnh PHP</h2>
+         <h3 id="khainiemcaulenh">5.1. Khái niệm về câu lệnh</h3>
+         <p>Một câu lệnh (statement) xác định một công việc mà chương trình phải thực hiện để xử lý dữ liệu đã được mô tả và khai báo. Các câu lệnh được ngăn cách với nhau bởi dấu chấm phẩy (;).</p>
+         <p>Ví dụ câu lệnh sau, gán một chuỗi ký tự vào biến tên $welcome</p>
+<pre class="prettyprint lang-php">
+$welcome = 'Chào mừng đến với PHP';
+</pre> 
+
+
+
+         <p><strong>Khối lệnh trong PHP</strong></p>
+         <p>Các câu lệnh có thể cho vào một khối bằng cách sử dụng dấu <code>{</code> và <code>}</code>.</p>
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   $pass = true;
+
+   if ($pass)
+   {
+      echo "Chúc mừng bạn";
+      echo "bạn đã hoàn thành bài kiểm tra";
+   }
+?&gt;        
+</pre>         
+         <h3 id="lenhgan">5.2. Lệnh gán</h3>
+         <p>Lệnh gán được dùng để gán giá trị, biểu thức vào một biến</p>
+         <p>Các toán tử gán gồm:
+               <strong>
+                   <code>=</code>,
+                   <code>+=</code>,
+                   <code>-=</code>,
+                   <code>*=</code>,
+                   <code>/=</code>
+               </strong>
+           </p>
+           <table class="table table-sm">
+               <thead>
+               <tr>
+                   <th>Toán tử</th>
+                   <th class="w-50">Diễn tả</th>
+                   <th>Ví dụ</th>
+               </tr>
+               </thead>
+               <tbody><tr>
+                   <td><code>=</code></td>
+                   <td>Toán tử gán:<br>
+                       Gán biểu thức bên phải của <code>=</code> vào biến bên trái
+                   </td>
+                   <td>
+                       $C = ($A + $B) <code> kết quả $C  bằng 66</code>
+                   </td>
+               </tr>
+           
+               <tr>
+                   <td><code>+=</code></td>
+                   <td>Toán tử công thêm:<br>
+                       Công thêm vào biến bên trái <code>+=</code> giá trị bên phải
+                   </td>
+                   <td>
+                                   $C = 11;<br>
+                                   $C += ($A + $B) <code>kết quả $C  bằng 77</code>
+                   </td>
+               </tr>
+           
+               <tr>
+                   <td><code>-=</code></td>
+                   <td>Toán tử trừ bớt:<br>
+                       Bớt đi giá trị biến bên trái của <code>-=</code> một lượng bằng biểu thức bên phải
+                   </td>
+                   <td>
+                                   $C = 60;<br>
+                                   $C -= ($A + $B) <code>kết quả $C  bằng -6</code>
+                   </td>
+               </tr>
+           
+               <tr>
+                   <td><code>*=</code></td>
+                   <td>Toán tử nhân với:<br>
+                       $A *= $B tương đương với $A = $A * $B
+                   </td>
+                   <td>
+                       $A *= $B  <code>kết quả $A  bằng 728</code>
+                   </td>
+               </tr>
+           
+               <tr>
+                   <td><code>/=</code></td>
+                   <td>Toán tử chia cho:<br>
+                       $A /= $B tương đương với $A = $A / $B
+                   </td>
+                   <td>
+                       $A /= $B  <code>kết quả $A  bằng 3.7142857142857</code>
+                   </td>
+               </tr>
+            
+           
+           </tbody></table>
+           <h3 id="nhapxuat">5.3. Nhập và xuất dữ liệu</h3>
+           <p><strong class="text-danger">Lệnh echo</strong></p>
+           <p>Lệnh echo để in ra nội dung dòng chữ, biến ... Nó là một phần của cấu trúc PHP nên không cần gọi bằng quy tắc hàm thông thường. Ví dụ in ra dòng chữ</p>
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   echo "Lập trình PHP";
+?&gt;        
+</pre>   
+      <p><strong class="text-danger">Hàm print</strong> : tương tự echo cũng in ra màn hình dòng chữ</p>
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   print("Lập trình PHP");
+?&gt;        
+</pre>   
+<p><strong class="text-danger">Lệnh readline</strong> : đọc một dòng dữ liệu (đọc đến khi nhấn Enter)</p>
+<p>Để VSC chạy ứng dụng và cho phép nhập dữ liệu tại terminal tích hợp cần thiết lập - cho chạy code ở terminal tích hợp</p>
+<p>Nhấn <kbd>CTRL + ,</kbd> để mở <code>setting</code>, gõ vào hộp tìm kiếm <code>code runner in terminal</code> các thiết lập xuất hiện đánh dấu vào mục
+<strong>whether to run code in integrated terminal</strong>
+</p>
+<img src="../images/020.png" alt="001">
+
+
+
+<pre class="prettyprint lang-php p-2">
+&lt;?php   
+   echo "TÍNH CĂN BẬC 2" . PHP_EOL;
+   $a = readline("Nhập số cần tính: ");
+   $can = sqrt($a);
+   echo "Căn của $a là $can";
+?&gt;        
+</pre>  
+<p>Có thể dùng hàm <code>fgets(STDIN)</code> để đọc dòng dữ liệu.</p>
+    </div>
+</main>
+
